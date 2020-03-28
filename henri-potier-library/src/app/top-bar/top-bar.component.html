@@ -1,1 +1,8 @@
-<p>top-bar works!</p>
+<a [routerLink]="['books']">
+  <h1>Books</h1>
+</a>
+<nav>
+  <a [routerLink]="['shoppingbasket']" [ngClass]="'btn btn-magic'">
+    <i [ngClass]="'material-icons'">shopping_cart</i>Checkout
+  </a>
+</nav>
