@@ -5,13 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BooksComponent } from './books/books.component';
 import { ShoppingBasketComponent } from './shopping-basket/shopping-basket.component';
-
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BooksComponent,
-    ShoppingBasketComponent
+    ShoppingBasketComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
