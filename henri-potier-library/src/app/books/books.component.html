@@ -1,1 +1,25 @@
-<p>books works!</p>
+<h1>Book list</h1>
+
+<div class="container">
+  <label>Search Book By Name:
+    <input #bookName />
+  </label>
+  <button [ngClass]="'serch'" title="search book" (click)="searchBook(bookName.value)">
+    search
+  </button>
+</div>
+<hr>
+<div class="row">
+  <div class="column" *ngFor="let book of books$ | async">
+    <div class="card">
+      <a routerLink=""><img [src]="book.cover" [ngClass]="'book-img'" alt="Jane"/></a>
+      <div class="container-book">
+        <p class="title">{{book.title}}</p>
+        <p>{{ book.synopsis | simplified:41}}...</p> <!--similar built-in pipe  slice: start [:end ]-->
+        <p class="price">Price: {{book.price}} euros</p>
+        <p><button class="button-add" (click)="addToBasket(book)">Add</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+
