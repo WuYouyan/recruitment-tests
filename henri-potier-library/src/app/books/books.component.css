@@ -2,7 +2,7 @@ body {
   box-sizing: border-box;
 }
 
-h1 {
+.book-list {
   margin-top: auto;
   margin-bottom: 5px
 }

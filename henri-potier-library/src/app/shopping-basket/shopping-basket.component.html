@@ -1,1 +1,23 @@
-<p>shopping-basket works!</p>
+<h2 class="shopping-basket">shopping-basket</h2>
+
+<hr>
+
+<div *ngFor = "let item of items" class = "basket-item" >
+  <span class="item_name">{{item.title}}</span>
+  <span *ngIf="item.number>1" class="item_number">X {{item.number}}</span>
+  <span class="item_price">{{item.price}} euros</span>
+</div>
+<div *ngIf="items.length==0">
+  <h3 class="empty-item">Empty</h3>
+</div>
+<hr>
+<div>
+  <span class="totalAmount">Total Amount: ( {{itemsAmount}} articles )</span>
+  <span class="discount">
+    {{totalAmount.toFixed(2)}} euros
+  </span>
+  <span class="discount" *ngIf="showOffer"> - {{bestDiscount}} euros </span>
+  <button [disabled]="items.length==0" class="offer" (click)="showBestOffer(totalAmount)">Best Offer</button>
+  <p class="total-payment" *ngIf="showOffer">Total Payment: {{totalAmount-bestDiscount}}</p>
+</div>
+

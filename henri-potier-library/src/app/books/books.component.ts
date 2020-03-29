@@ -3,6 +3,7 @@ import {Observable} from "rxjs";
 
 import {BookService} from "../book.service";
 import {Book} from "../book";
+import {BasketService} from "../basket.service";
 
 @Component({
   selector: 'app-books',
@@ -13,7 +14,10 @@ export class BooksComponent implements OnInit {
   books$: Observable<Book[]>;
   // books: Book[];
 
-  constructor(private bookService: BookService) { }
+  constructor(
+    private bookService: BookService,
+    private basketService: BasketService
+    ) { }
 
   ngOnInit(): void {
     /*this.books$ = this.getBooks().pipe(
@@ -37,8 +41,9 @@ export class BooksComponent implements OnInit {
       this.books$ = this.bookService.searchBooks(input);
   }
 
-  addToBasket(item: any): void {
-    // TODO: add to basket
+  addToBasket(book: Book): void {
+    console.log("added book: ", book); //to be removed
+    this.basketService.addToBasket(book);
   }
 
 }

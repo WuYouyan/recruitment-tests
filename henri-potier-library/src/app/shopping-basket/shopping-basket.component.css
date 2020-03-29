@@ -1,0 +1,52 @@
+.shopping-basket {
+  margin: auto 0 5px 5px
+}
+
+.basket-item {
+  width: 100%;
+  min-width: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 16px 32px;
+  margin-bottom: 8px;
+  border-radius: 2px;
+  background-color: #EEEEEE;
+}
+
+.item_number {
+  position: absolute;
+  right: 30%;
+}
+
+.item_price {
+  width: 100px;
+}
+
+.empty-item {
+  margin: 50px 0 50px 50px;
+}
+
+.totalAmount {
+  margin-left: 10px;
+  /*position: absolute;
+  right: 100px;*/
+  font-size: 1.47em;
+}
+
+.discount {
+/*  position: absolute;
+  right: 100px;*/
+  margin-left: 1.1em;
+  font-size: 1.40em;
+  color: red;
+}
+
+.offer {
+  background-color: #797979;
+}
+
+.total-payment {
+  font-size: 1.66em;
+  margin-left: 10px;
+}
