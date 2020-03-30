@@ -14,9 +14,24 @@
   background-color: #EEEEEE;
 }
 
+button.minus1, button.plus1 {
+  padding: 4px 10px;
+  background-color: #7973a7;
+}
+
+.minus1 {
+  position: absolute;
+  right: 34%;
+}
+
 .item_number {
   position: absolute;
   right: 30%;
+}
+
+.plus1 {
+  position: absolute;
+  right: 25%;
 }
 
 .item_price {

@@ -4,7 +4,10 @@
 
 <div *ngFor = "let item of items" class = "basket-item" >
   <span class="item_name">{{item.title}}</span>
-  <span *ngIf="item.number>1" class="item_number">X {{item.number}}</span>
+  <button class="minus1" [disabled]="item.number < 2" (click)="minusOne(item)">-1</button>
+<!--  <span *ngIf="item.number>1" class="item_number">X {{item.number}}</span>-->
+  <span class="item_number">X {{item.number}}</span>
+  <button class="plus1" (click)="plusOne(item)">+1</button>
   <span class="item_price">{{item.price}} euros</span>
 </div>
 <div *ngIf="items.length==0">
@@ -18,6 +21,6 @@
   </span>
   <span class="discount" *ngIf="showOffer"> - {{bestDiscount}} euros </span>
   <button [disabled]="items.length==0" class="offer" (click)="showBestOffer(totalAmount)">Best Offer</button>
-  <p class="total-payment" *ngIf="showOffer">Total Payment: {{totalAmount-bestDiscount}}</p>
+  <p class="total-payment" *ngIf="showOffer">Total Payment: {{totalAmount-bestDiscount}} euros</p>
 </div>
 

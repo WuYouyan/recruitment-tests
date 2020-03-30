@@ -35,6 +35,14 @@ export class ShoppingBasketComponent implements OnInit {
     return total;
   }
 
+  minusOne(item): void {
+    item.number--;
+  }
+
+  plusOne(item): void {
+    item.number++;
+  }
+
   showBestOffer(total: number): void {
     this.showOffer = true;
     let typePercent: number = 0;
