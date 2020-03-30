@@ -21,6 +21,6 @@
   </span>
   <span class="discount" *ngIf="showOffer"> - {{bestDiscount}} euros </span>
   <button [disabled]="items.length==0" class="offer" (click)="showBestOffer(totalAmount)">Best Offer</button>
-  <p class="total-payment" *ngIf="showOffer">Total Payment: {{totalAmount-bestDiscount}} euros</p>
+  <p class="total-payment" *ngIf="showOffer">Total Payment: {{finalAmount}} euros</p>
 </div>
 

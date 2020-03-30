@@ -15,6 +15,8 @@ export class ShoppingBasketComponent implements OnInit {
 
   bestDiscount: string = '0';
 
+  finalAmount: number;
+
   constructor(
     private basket: BasketService
   ) { }
@@ -37,10 +39,12 @@ export class ShoppingBasketComponent implements OnInit {
 
   minusOne(item): void {
     item.number--;
+    this.showOffer= false;
   }
 
   plusOne(item): void {
     item.number++;
+    this.showOffer= false;
   }
 
   showBestOffer(total: number): void {
@@ -72,6 +76,7 @@ export class ShoppingBasketComponent implements OnInit {
         console.log("bestDiscount: ", this.bestDiscount);
       }
       console.log("bestDiscount: ", this.bestDiscount);
+      this.finalAmount = this.totalAmount - Number(this.bestDiscount);
     }
     );
   }
