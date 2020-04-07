@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import {BasketService} from "../basket.service";
+import {BasketService} from '../basket.service';
 
 @Component({
   selector: 'app-shopping-basket',
@@ -11,9 +11,9 @@ export class ShoppingBasketComponent implements OnInit {
 
   items;
 
-  showOffer: boolean = false;
+  showOffer = false;
 
-  bestDiscount: string = '0';
+  bestDiscount = '0';
 
   finalAmount: number;
 
@@ -27,86 +27,52 @@ export class ShoppingBasketComponent implements OnInit {
 
   get itemsAmount(): number {
     let totalNumber = 0;
-    this.items.map(item => totalNumber+=item.number);
+    this.items.map(item => totalNumber += item.number);
     return totalNumber;
   }
 
   get totalAmount(): number {
     let total = 0 ;
-    this.items.map(item => total+=item.price*item.number);
+    this.items.map(item => total += item.price * item.number);
     return total;
   }
 
   minusOne(item): void {
     item.number--;
-    this.showOffer= false;
+    this.showOffer = false;
   }
 
   plusOne(item): void {
     item.number++;
-    this.showOffer= false;
+    this.showOffer = false;
   }
 
   showBestOffer(total: number): void {
     this.showOffer = true;
-    let typePercent: number = 0;
-    let typeMinus: number = 0;
-    let typeSlice: number = 0;
+    let typePercent = 0;
+    let typeMinus = 0;
+    let typeSlice = 0;
     this.basket.getOffer().subscribe(data => {
-      if (!!data.offers){
-        let commercialOffers = data.offers;
-        commercialOffers.map( offer =>
-          {
-            if (offer.type == "percentage"){
-              typePercent = (offer.value*total*0.01);
-            }
-            else if (offer.type == "minus"){
+      if (!!data.offers) {
+        const commercialOffers = data.offers;
+        commercialOffers.map( offer => {
+            if (offer.type === 'percentage') {
+              typePercent = (offer.value * total * 0.01);
+            } else if (offer.type === 'minus') {
               typeMinus = offer.value;
-            }
-            else if (offer.type == "slice"){
-              if (total>=offer.sliceValue){
+            } else if (offer.type === 'slice') {
+              if (total >= offer.sliceValue) {
                 typeSlice = offer.value;
               }
-            }
-            else {}
+            } else {}
           }
         );
         this.bestDiscount = Math.max(typePercent, typeMinus, typeSlice)
           .toFixed(2).toString();
-        console.log("bestDiscount: ", this.bestDiscount);
       }
-      console.log("bestDiscount: ", this.bestDiscount);
       this.finalAmount = this.totalAmount - Number(this.bestDiscount);
     }
     );
   }
-  /*showBestOffer(total: number): void {
-    this.showOffer = true;
-    let typePercent: number = 0;
-    let typeMinus: number = 0;
-    let typeSlice: number = 0;
-    if (this.basket.getOffer().offers){
-      let commercialOffers = this.basket.getOffer().offers;
-      commercialOffers.map( offer =>
-        {
-          if (offer.type == "percentage"){
-            typePercent = offer.value*total;
-          }
-          else if (offer.type == "minus"){
-            typeMinus = offer.value;
-          }
-          else if (offer.type == "slice"){
-            if (total>=offer.sliceValue){
-              typeSlice = offer.value;
-            }
-          }
-          else {}
-        }
-      );
-      this.bestDiscount = Math.max(typePercent, typeMinus, typeSlice);
-      console.log("bestDiscount: ", this.bestDiscount);
-    }
-    console.log("bestDiscount: ", this.bestDiscount);
-  }*/
 
 }

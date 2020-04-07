@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SimplifiedPipe implements PipeTransform {
 
-  transform(value: string[] = [""], sliceEnd: number): string {
+  transform(value: string[] = [''], sliceEnd: number): string {
       return value.join('.').slice(0, sliceEnd);
   }
 
